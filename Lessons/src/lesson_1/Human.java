@@ -60,8 +60,8 @@ public class Human {
 
     @Override
     public int hashCode() {
-        int result = getSpeed();
-        result = 31 * result + getJumpHeight();
+        int result = getName().hashCode();
+        result = 31 * result + getAge();
         return result;
     }
 
