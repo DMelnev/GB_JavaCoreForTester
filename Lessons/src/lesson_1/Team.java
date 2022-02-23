@@ -11,7 +11,7 @@ import java.util.HashSet;
 
 public class Team {
     private String name;
-    HashSet<Member> list = new HashSet<>();
+    private HashSet<Member> list = new HashSet<>();
 
     public Team(String name, HashSet<Member> list) {
         this.name = name;
@@ -34,5 +34,14 @@ public class Team {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public HashSet<Member> getTeam(){
+        return list;
+    }
+    public void showResults(){
+        for (Member member: list){
+            System.out.println(member);
+        }
     }
 }

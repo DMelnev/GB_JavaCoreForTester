@@ -65,11 +65,4 @@ public class Human {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }
