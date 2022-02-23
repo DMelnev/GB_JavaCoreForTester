@@ -6,7 +6,6 @@
  */
 package lesson_1;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Team {
@@ -40,8 +39,12 @@ public class Team {
         return list;
     }
     public void showResults(){
-        for (Member member: list){
-            System.out.println(member);
-        }
+        list.stream()
+                .filter(Member::isResult)
+                .sorted()
+                .forEach(System.out::println);
+        list.stream()
+                .filter(s->!s.isResult())
+                .forEach(System.out::println);
     }
 }
