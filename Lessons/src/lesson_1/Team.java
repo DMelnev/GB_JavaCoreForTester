@@ -2,7 +2,7 @@
  * class Team
  *
  * @author Melnev Dmitry
- * @version 2022-02-
+ * @version 2022-02-24
  */
 package lesson_1;
 
@@ -12,10 +12,6 @@ public class Team {
     private String name;
     private HashSet<Member> list = new HashSet<>();
 
-    public Team(String name, HashSet<Member> list) {
-        this.name = name;
-        this.list = list;
-    }
     public Team(String name){
         this.name = name;
     }

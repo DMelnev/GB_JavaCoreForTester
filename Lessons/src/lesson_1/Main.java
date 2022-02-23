@@ -4,7 +4,7 @@
  * implementation of running competitions with barriers
  *
  * @author Melnev Dmitry
- * @version 2022-02-
+ * @version 2022-02-24
  */
 package lesson_1;
 

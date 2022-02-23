@@ -2,7 +2,7 @@
  * class Human
  *
  * @author Melnev Dmitry
- * @version 2022-02-
+ * @version 2022-02-24
  */
 package lesson_1;
 

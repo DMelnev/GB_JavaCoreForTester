@@ -2,7 +2,7 @@
  * class Course
  *
  * @author Melnev Dmitry
- * @version 2022-02-
+ * @version 2022-02-24
  */
 package lesson_1;
 
@@ -40,9 +40,11 @@ public class Course {
 
     public void doIt(Team team) {
         HashSet<Member> list = team.getTeam();
+
         for (Member person : list) {
             person.setResult(true);
         }
+
         for (int barrier : barriers) {
             for (Member person : list) {
                 if (person.getJumpHeight() < barrier) {
@@ -50,10 +52,12 @@ public class Course {
                 }
             }
         }
+
         ArrayList<Member> sorted = new ArrayList<>(list.stream()
                 .filter(Member::isResult)
+                .sorted()
                 .collect(Collectors.toList()));
-        Collections.sort(sorted);
+
         for (int i = 0; i < sorted.size(); i++) {
             sorted.get(i).setPlace(i + 1);
             list.add(sorted.get(i));
