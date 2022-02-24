@@ -46,7 +46,7 @@ public class Team {
         return list;
     }
 
-    public void getWinners(){
+    public void showWinners(){
         list.stream()
                 .filter(Member::isResult)
                 .sorted()
@@ -54,7 +54,7 @@ public class Team {
     }
 
     public void showResults() {
-        getWinners();
+        showWinners();
         list.stream()
                 .filter((s) -> !s.isResult())
                 .forEach(System.out::println);
