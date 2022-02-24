@@ -1,6 +1,6 @@
 /**
  * class Main
- * <p>
+ *
  * implementation of running competitions with barriers
  *
  * @author Melnev Dmitry
