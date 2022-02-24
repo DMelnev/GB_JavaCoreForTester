@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class Team {
     private String name;
-    private final HashSet<Member> list = new HashSet<>();
+    private HashSet<Member> list = new HashSet<>();
 
     public Team(String name) {
         this.name = name;
