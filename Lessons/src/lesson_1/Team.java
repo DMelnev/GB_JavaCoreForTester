@@ -7,19 +7,21 @@
 package lesson_1;
 
 import java.util.HashSet;
+import java.util.stream.Collectors;
 
 public class Team {
     private String name;
-    private HashSet<Member> list = new HashSet<>();
+    private final HashSet<Member> list = new HashSet<>();
 
-    public Team(String name){
+    public Team(String name) {
         this.name = name;
     }
 
-    public void addMember(Member member){
+    public void addMember(Member member) {
         list.add(member);
     }
-    public void delMember(Member member){
+
+    public void delMember(Member member) {
         list.remove(member);
     }
 
@@ -30,17 +32,31 @@ public class Team {
     public void setName(String name) {
         this.name = name;
     }
+    public void init(){
+        list.stream()
+                .map(s->{
+                    s.setResult(true);
+                    s.setPlace(0);
+                    return null;
+                })
+                .collect(Collectors.toList());
+    }
 
-    public HashSet<Member> getTeam(){
+    public HashSet<Member> getTeam() {
         return list;
     }
-    public void showResults(){
+
+    public void getWinners(){
         list.stream()
                 .filter(Member::isResult)
                 .sorted()
                 .forEach(System.out::println);
+    }
+
+    public void showResults() {
+        getWinners();
         list.stream()
-                .filter(s->!s.isResult())
+                .filter((s) -> !s.isResult())
                 .forEach(System.out::println);
     }
 }

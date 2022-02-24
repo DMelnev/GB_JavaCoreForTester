@@ -39,11 +39,8 @@ public class Course {
     }
 
     public void doIt(Team team) {
+        team.init();
         HashSet<Member> list = team.getTeam();
-
-        for (Member person : list) {
-            person.setResult(true);
-        }
 
         for (int barrier : barriers) {
             for (Member person : list) {
