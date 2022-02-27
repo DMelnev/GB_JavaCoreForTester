@@ -2,7 +2,7 @@
  * class MyArraySizeException
  *
  * @author Melnev Dmitry
- * @version 2022-02-
+ * @version 2022-02-28
  */
 package Lesson_2;
 
