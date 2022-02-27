@@ -46,16 +46,20 @@ public class Main {
     }
 
     public static int sum(String[][] array) throws MyArraySizeException, MyArrayDataException {
-        int sum = 0;
+
         if (array.length != 4 || array[0].length != 4) {
             throw new MyArraySizeException("Array length is not correct");
         }
+
+        int sum = 0;
+
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[0].length; j++) {
                 try {
                     sum += Integer.parseInt(array[i][j]);
                 } catch (NumberFormatException e) {
-                    throw new MyArrayDataException("Element in line " + i + ", column " + j + ", is bad format.");
+                    throw new MyArrayDataException("Element \"" + array[i][j] + "\" array["
+                            + i + "][" + j + "] is bad format.");
                 }
             }
         }
