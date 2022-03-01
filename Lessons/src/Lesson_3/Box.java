@@ -30,4 +30,8 @@ public class Box<T extends Fruit> {
         if (list.size() <= 0) return 0f;
         return (float) list.size() * list.get(0).getWeight();
     }
+
+    public boolean compare(Box<? extends Fruit> o) {
+        return (getWeight() == o.getWeight());
+    }
 }

@@ -33,8 +33,8 @@ public class Main {
         Box<Apple> appleBox3 = new Box();
         Box<Apple> appleBox4 = new Box();
         for (int i = 0; i < 10; i++) {
-            orangeBox1.addItem(new Orange());
-            if (i > 1) orangeBox2.addItem(new Orange());
+            if (i > 5) orangeBox1.addItem(new Orange());
+            orangeBox2.addItem(new Orange());
             if (i > 3) appleBox3.addItem(new Apple());
             if (i > 5) appleBox4.addItem(new Apple());
         }
@@ -42,6 +42,7 @@ public class Main {
         System.out.println("box2 weight " + orangeBox2.getWeight());
         System.out.println("box3 weight " + appleBox3.getWeight());
         System.out.println("box4 weight " + appleBox4.getWeight());
+        System.out.println(orangeBox1.compare(appleBox3));
         System.out.println();
 
         orangeBox1.pourTo(orangeBox2);
@@ -51,15 +52,19 @@ public class Main {
         System.out.println("box2 weight " + orangeBox2.getWeight());
         System.out.println("box3 weight " + appleBox3.getWeight());
         System.out.println("box4 weight " + appleBox4.getWeight());
+        System.out.println(orangeBox1.compare(appleBox3));
         System.out.println();
 
         appleBox4.pourTo(appleBox3);
         System.out.println("box3 weight " + appleBox3.getWeight());
         System.out.println("box4 weight " + appleBox4.getWeight());
+        System.out.println(appleBox3.compare(appleBox3));
+        System.out.println();
 
         appleBox3.pourTo(appleBox4);
         System.out.println("box3 weight " + appleBox3.getWeight());
         System.out.println("box4 weight " + appleBox4.getWeight());
+        System.out.println(orangeBox1.compare(appleBox3));
 
     }
 }
