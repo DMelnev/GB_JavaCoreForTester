@@ -16,8 +16,13 @@ public class Box<T extends Fruit> {
         list.add(item);
     }
 
-    public void transfer(ArrayList<T> dist) {
-        dist.addAll(list);
+    public ArrayList<T> getList() {
+        return list;
+    }
+
+    public void pourTo(Box<T> dist) {
+        if (this == dist) return;
+        dist.getList().addAll(list);
         list.clear();
     }
 
