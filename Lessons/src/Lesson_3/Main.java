@@ -36,7 +36,7 @@ public class Main {
             if (i > 5) orangeBox1.addItem(new Orange());
             orangeBox2.addItem(new Orange());
             if (i > 3) appleBox3.addItem(new Apple());
-            if (i > 5) appleBox4.addItem(new Apple());
+            if (i > 0) appleBox4.addItem(new Apple());
         }
         System.out.println("box1 weight " + orangeBox1.getWeight());
         System.out.println("box2 weight " + orangeBox2.getWeight());
