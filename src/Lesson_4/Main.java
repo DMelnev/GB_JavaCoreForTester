@@ -46,7 +46,21 @@ public class Main {
         System.out.println(map);
 
 //        Exercise two:
+        System.out.println();
 
+        PhoneGuide phoneGuide = new PhoneGuide();
+        phoneGuide.add("Ivanov", "+7900-080-08-08", "+380500-25-46");
+        phoneGuide.add("Petrov", "+7900-080-07-07");
+        phoneGuide.add("Suvorov", "+7900-080-06-06", "+380502-78-89", "+38087878787");
+        phoneGuide.add("Vasin", "+7910-222-02-22", "+38050230-32-56");
+
+        System.out.println("Ivanov " + phoneGuide.get("Ivanov"));
+        System.out.println("Petrov " + phoneGuide.get("Petrov"));
+        System.out.println("Suvorov " + phoneGuide.get("Suvorov"));
+        System.out.println("Vasin " + phoneGuide.get("Vasin"));
+
+        phoneGuide.add("Petrov", "+7900-080-06-06", "+380502-78-89", "+38087878787");
+        System.out.println("Petrov " + phoneGuide.get("Petrov"));
 
 
     }
