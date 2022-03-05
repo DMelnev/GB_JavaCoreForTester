@@ -28,8 +28,7 @@ public class Numbers {
 
     @Override
     public String toString() {
-        StringBuilder result;
-        result = new StringBuilder("\n");
+        StringBuilder result = new StringBuilder("\n");
         for (String i : numbers) {
             result.append(i).append("\n");
         }
