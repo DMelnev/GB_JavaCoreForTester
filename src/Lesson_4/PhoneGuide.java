@@ -17,15 +17,13 @@ public class PhoneGuide {
     }
 
     public void add(String name, String... numbers) {
-        Numbers number;
+
         if (list.containsKey(name)) {
-            number = list.get(name);
             for (String n : numbers) {
-                number.addNumber(n);
+                list.get(name).addNumber(n);
             }
         } else {
-            number = new Numbers(numbers);
-            list.put(name, number);
+            list.put(name, new Numbers(numbers));
         }
     }
 }
