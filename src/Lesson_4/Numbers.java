@@ -22,6 +22,10 @@ public class Numbers {
             numbers.add(i);
     }
 
+    public ArrayList<String> getNumbers() {
+        return numbers;
+    }
+
     @Override
     public String toString() {
         StringBuilder result;
