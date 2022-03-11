@@ -35,6 +35,7 @@ public class Main {
         list.add("the");
         list.add("fish");
         list.add("good");
+        list.add("good");
 
         HashMap<String, Integer> map = new HashMap<>();
 
