@@ -16,11 +16,12 @@ public class FileWorker {
         charSet = charset;
     }
 
-    public static StringBuilder readFile(String fileName) {
+    public static String loadFile(String fileName) {
         StringBuilder fileString = new StringBuilder();
 
         try (InputStream inputStream = new FileInputStream(fileName);
-             InputStreamReader inputStreamReader = new InputStreamReader(inputStream, charSet.getCharset());) {
+             InputStreamReader inputStreamReader =
+                     new InputStreamReader(inputStream, charSet.getCharset());) {
             BufferedReader reader = new BufferedReader(inputStreamReader);
             char[] buffer = new char[BUFFER_SIZE];
             int num = 0;
@@ -32,11 +33,11 @@ public class FileWorker {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return fileString;
+        return fileString.toString();
     }
 
 
-    public static boolean writeFile(String string, String fileName) {
+    public static boolean saveFile(String string, String fileName) {
 
         try (FileOutputStream outputStream = new FileOutputStream(fileName);
              OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, charSet.getCharset())) {
