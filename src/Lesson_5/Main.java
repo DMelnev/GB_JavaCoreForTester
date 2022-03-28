@@ -31,7 +31,7 @@ public class Main {
 
         if (!FileWorker.saveFile(result, FILE_NAME_RESULT))
             System.out.println("Не удалось записать в файл!");
-        else System.out.println("Файл "+FILE_NAME_RESULT + " успешно сохранен.");
+        else System.out.println("Файл " + FILE_NAME_RESULT + " успешно сохранен.");
 
     }
 }

@@ -14,7 +14,7 @@ public enum Encoding {
     UTF16("UTF-16"),
     KOI8R("KOI8-R");
 
-    private String charset;
+    private final String charset;
 
     Encoding(String charset) {
         this.charset = charset;

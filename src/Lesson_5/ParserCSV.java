@@ -16,7 +16,7 @@ public class ParserCSV {
         AppData data = new AppData();
 
         //first line is header
-        String next = scanner.nextLine().trim().replaceAll(" ","");
+        String next = scanner.nextLine().trim().replaceAll(" ", "");
         if (next.equals("")) return null;
         data.setHeader(next.split(";"));
         //body
