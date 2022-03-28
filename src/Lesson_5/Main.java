@@ -11,10 +11,13 @@ public class Main {
         ParserCSV parser = new ParserCSV();
         FileWorker.setCharSet(Encoding.UTF8);
 
-        String textFile  = FileWorker.loadFile(FILE_NAME);
+        String textFile = FileWorker.loadFile(FILE_NAME);
         System.out.println(textFile);
 
-        parser.stringToData(textFile);
+        data = parser.stringToData(textFile);
+
+        String result = parser.dataToString(data);
+        System.out.println(result);
 
     }
 }

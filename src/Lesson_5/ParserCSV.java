@@ -42,6 +42,7 @@ public class ParserCSV {
             if (i == length - 1) result.append("\n");
             else result.append("; ");
         }
+        //body
         try {
             for (int i = 0; i < length; i++) {
                 int lengthCol = data.getData()[i].length;
@@ -52,7 +53,8 @@ public class ParserCSV {
                 }
             }
         } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println("Cannot add line, Error OutOfBoundsException");
         }
         return result.toString();
     }
