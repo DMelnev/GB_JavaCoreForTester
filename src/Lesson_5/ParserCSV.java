@@ -19,7 +19,6 @@ public class ParserCSV {
         if (next.equals("")) return null;
         String[] arrHeader = next.split(";");
         data.setHeader(arrHeader);
-        int length = arrHeader.length;
 
         //body
         while (scanner.hasNext()) {
@@ -32,6 +31,29 @@ public class ParserCSV {
     }
 
     public String dataToString(AppData data) {
-        return null;
+
+        if (data == null || data.getHeader().length < 1) return "";
+        StringBuilder result = new StringBuilder();
+        int length = data.getHeader().length;
+
+        //header
+        for (int i = 0; i < length; i++) {
+            result.append(data.getHeader()[i]);
+            if (i == length - 1) result.append("\n");
+            else result.append("; ");
+        }
+        try {
+            for (int i = 0; i < length; i++) {
+                int lengthCol = data.getData()[i].length;
+                for (int j = 0; j < lengthCol; j++) {
+                    result.append(data.getData()[i][j]);
+                    if (i == length - 1) result.append("\n");
+                    else result.append("; ");
+                }
+            }
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return result.toString();
     }
 }
