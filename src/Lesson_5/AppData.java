@@ -1,7 +1,12 @@
 package Lesson_5;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+/**
+ * class AppData
+ *
+ * @author Melnev Dmitry
+ * @version 2022-02-
+ */
+
 import java.util.Arrays;
 
 public class AppData {

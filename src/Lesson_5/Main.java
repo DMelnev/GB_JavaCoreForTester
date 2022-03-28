@@ -1,7 +1,11 @@
 package Lesson_5;
 
-import java.io.File;
-import java.io.IOException;
+/**
+ * class Main
+ *
+ * @author Melnev Dmitry
+ * @version 2022
+ */
 
 public class Main {
     private final static String FILE_NAME = "file.csv";
@@ -27,6 +31,7 @@ public class Main {
 
         if (!FileWorker.saveFile(result, FILE_NAME_RESULT))
             System.out.println("Не удалось записать в файл!");
+        else System.out.println("Файл "+FILE_NAME_RESULT + " успешно сохранен.");
 
     }
 }

@@ -1,6 +1,7 @@
 package Lesson_5;
+
 /**
- * class fileWorker
+ * class FileWorker
  *
  * @author Melnev Dmitry
  * @version 2022

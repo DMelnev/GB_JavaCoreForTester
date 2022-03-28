@@ -1,15 +1,14 @@
 package Lesson_5;
 
-import java.sql.Array;
-import java.util.Arrays;
-import java.util.Scanner;
-
 /**
- * class parserCSV
+ * class ParserCSV
  *
  * @author Melnev Dmitry
  * @version 2022
  */
+
+import java.util.Scanner;
+
 public class ParserCSV {
 
     public AppData stringToData(String string) {
