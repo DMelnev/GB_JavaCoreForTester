@@ -34,27 +34,27 @@ public class ParserCSV {
 
         if (data == null || data.getHeader().length < 1) return "";
         StringBuilder result = new StringBuilder();
-        int length = data.getHeader().length;
+        int column = data.getHeader().length;
 
         //header
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < column; i++) {
             result.append(data.getHeader()[i]);
-            if (i == length - 1) result.append("\n");
+            if (i == column - 1) result.append("\n");
             else result.append("; ");
         }
         //body
         try {
-            for (int i = 0; i < length; i++) {
-                int lengthCol = data.getData()[i].length;
-                for (int j = 0; j < lengthCol; j++) {
+            int lengthLine = data.getPosition();
+            for (int i = 0; i < lengthLine; i++) {
+                for (int j = 0; j < column; j++) {
                     result.append(data.getData()[i][j]);
-                    if (i == length - 1) result.append("\n");
+                    if (j == column - 1) result.append("\n");
                     else result.append("; ");
                 }
             }
         } catch (IndexOutOfBoundsException e) {
 //            e.printStackTrace();
-            System.out.println("Cannot add line, Error OutOfBoundsException");
+            System.out.println("File Error");
         }
         return result.toString();
     }

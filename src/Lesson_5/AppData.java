@@ -10,6 +10,10 @@ public class AppData {
     private int position = 0;
     private int columns = 0;
 
+    public int getPosition() {
+        return position;
+    }
+
     public AppData() {
         position = 0;
     }
@@ -20,7 +24,7 @@ public class AppData {
 
     public void setHeader(String... header) {
         columns = header.length;
-        data = new int[columns][16];
+        data = new int[16][columns];
         this.header = header;
     }
 
@@ -32,7 +36,8 @@ public class AppData {
         if (this.data == null) return;
         checkLines();
         try {
-            this.data[++position] = Arrays.stream(data)
+            this.data[position++] = Arrays.stream(data)
+                    .map(String::trim)
                     .mapToInt(Integer::parseInt)
                     .toArray();
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -43,11 +48,11 @@ public class AppData {
 
     private void checkLines() {
         if (data == null) return;
-        int lngth = data[0].length;
+        int lngth = data.length;
         if (position - 1 >= lngth) {
-            int[][] temp = new int[columns][lngth * 2];
-            for (int i = 0; i < columns; i++) {
-                for (int j = 0; j < position; j++) {
+            int[][] temp = new int[lngth * 2][columns];
+            for (int i = 0; i < position; i++) {
+                for (int j = 0; j < columns; j++) {
                     temp[i][j] = data[i][j];
                 }
             }
