@@ -1,5 +1,7 @@
 package Lesson_5;
 
+import java.sql.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -15,17 +17,14 @@ public class ParserCSV {
         AppData data = new AppData();
 
         //first line is header
-        String next = scanner.nextLine().trim();
+        String next = scanner.nextLine().trim().replaceAll(" ","");
         if (next.equals("")) return null;
-        String[] arrHeader = next.split(";");
-        data.setHeader(arrHeader);
-
+        data.setHeader(next.split(";"));
         //body
         while (scanner.hasNext()) {
             String nextLine = scanner.nextLine().trim();
             if (nextLine.equals("")) continue;
-            String[] array = nextLine.split(";");
-            data.setData(array);
+            data.setData(nextLine.split(";"));
         }
         return data;
     }

@@ -39,13 +39,24 @@ public class FileWorker {
 
     public static boolean saveFile(String string, String fileName) {
 
-        try (FileOutputStream outputStream = new FileOutputStream(fileName);
-             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, charSet.getCharset())) {
-            outputStreamWriter.write(string.toString());
+        File file = new File(fileName);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+//                e.printStackTrace();
+                return false;
+            }
+        }
+
+        try (FileOutputStream outputStream = new FileOutputStream(file);
+             OutputStreamWriter outputStreamWriter =
+                     new OutputStreamWriter(outputStream, charSet.getCharset())) {
+            outputStreamWriter.write(string);
             return true;
 
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             return false;
         }
     }
