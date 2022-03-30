@@ -3,6 +3,7 @@ package Lesson_6;
 import okhttp3.*;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Class Lesson_6.Main
@@ -33,7 +34,7 @@ public class   Main {
 
         try {
             Response response = okHttpClient.newCall(request).execute();
-            System.out.println(response.body().string());
+            System.out.println(Objects.requireNonNull(response.body()).string());
         } catch (IOException e) {
             e.printStackTrace();
         }
