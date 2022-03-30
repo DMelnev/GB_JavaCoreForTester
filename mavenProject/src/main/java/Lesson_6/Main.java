@@ -12,7 +12,7 @@ import java.util.Objects;
  * @version 2022-
  **/
 
-public class   Main {
+public class Main {
     private static final OkHttpClient okHttpClient = new OkHttpClient();
     private static final StringBuilder INDENT = new StringBuilder("    "); //отступ
 
@@ -71,9 +71,7 @@ public class   Main {
                     i += tempIndent.length() + 1;
                 }
             }
-
         }
         return temp.toString();
     }
-
 }
