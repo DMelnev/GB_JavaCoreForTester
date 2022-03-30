@@ -18,9 +18,13 @@ public class   Main {
 
         HttpUrl httpUrl = new HttpUrl.Builder()
                 .scheme("HTTP")
-                .host("gb.ru")
-                .addPathSegment("user")
-                .addPathSegment("1")
+                .host("dataservice.accuweather.com")
+                .addPathSegment("forecasts")
+                .addPathSegment("v1")
+                .addPathSegment("daily")
+                .addPathSegment("5day")
+                .addPathSegment("295212")
+                .addQueryParameter("apikey", "5lG1vkfM5xGuyaM74tQTYAz4eOk8Omel")
                 .build();
 
         Request request = new Request.Builder()
@@ -29,7 +33,7 @@ public class   Main {
 
         try {
             Response response = okHttpClient.newCall(request).execute();
-            System.out.println(response.body());
+            System.out.println(response.body().string());
         } catch (IOException e) {
             e.printStackTrace();
         }
