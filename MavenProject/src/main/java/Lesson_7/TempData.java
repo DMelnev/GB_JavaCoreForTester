@@ -6,18 +6,15 @@ import java.util.Date;
 public class TempData {
     private double minTemp;
     private double maxTemp;
+    private  String dayPhrase;
     private Date date;
 
-    public double getMinTemp() {
-        return minTemp;
+    public void setDayPhrase(String dayPhrase) {
+        this.dayPhrase = dayPhrase;
     }
 
     public void setMinTemp(double minTemp) {
         this.minTemp = minTemp;
-    }
-
-    public double getMaxTemp() {
-        return maxTemp;
     }
 
     public void setMaxTemp(double maxTemp) {
@@ -34,6 +31,12 @@ public class TempData {
 
     @Override
     public String toString() {
-        return String.format( "%.1f\u00BAC -  %.1f\u00BAC", minTemp,maxTemp);
+
+        return String.format("%s%.1f\u00BAC -  %s%.1f\u00BAC %s",
+                (minTemp > 0) ? "+" : "",
+                minTemp,
+                (maxTemp > 0) ? "+" : "",
+                maxTemp,
+                dayPhrase);
     }
 }
