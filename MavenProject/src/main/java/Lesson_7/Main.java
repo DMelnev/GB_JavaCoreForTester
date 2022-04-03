@@ -3,7 +3,11 @@ package Lesson_7;
 import okhttp3.*;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  * Class Lesson_6.Main
@@ -13,36 +17,25 @@ import java.util.Objects;
  **/
 
 public class Main {
-    private static final OkHttpClient okHttpClient = new OkHttpClient();
     private static final StringBuilder INDENT = new StringBuilder("    "); //отступ
-    private final static String FILE_NAME_RESULT = "fileResult.json";
+    public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        HttpUrl httpUrl = new HttpUrl.Builder()
-                .scheme("HTTP")
-                .host("dataservice.accuweather.com")
-                .addPathSegment("forecasts")
-                .addPathSegment("v1")
-                .addPathSegment("daily")
-                .addPathSegment("5day")
-                .addPathSegment("295212")
-                .addQueryParameter("apikey", "5lG1vkfM5xGuyaM74tQTYAz4eOk8Omel")
-                .build();
+        System.out.println("Enter the city:");
+        String cityName = scanner.next();
+        int cityID = RequestSender.getCityID(cityName);
+        ArrayList<TempData> list = RequestSender.getTempForFiveDays(cityID);
 
-        Request request = new Request.Builder()
-                .url(httpUrl)
-                .build();
+        System.out.println();
+        SimpleDateFormat simpleDate = new SimpleDateFormat("dd.MM.yyyy ");
+        if (list.size() > 0) {
+            System.out.println("Weather for next five days in " + cityName);
 
-        try {
-            Response response = okHttpClient.newCall(request).execute();
-            String result = formatString(Objects.requireNonNull(response.body()).string());
-            if (!FileWorker.saveFile(result, FILE_NAME_RESULT))
-                System.out.println("Не удалось записать в файл!");
-            else System.out.println("Файл " + FILE_NAME_RESULT + " успешно сохранен.");
-        } catch (IOException e) {
-            System.out.println("Не удалось записать в файл!");
-            e.printStackTrace();
+            for (TempData element : list) {
+                System.out.print(simpleDate.format(element.getDate()) + " ");
+                System.out.println(element);
+            }
         }
 
     }
@@ -80,7 +73,4 @@ public class Main {
         return temp.toString();
     }
 
-    private static double fahrengeitToCelsius(double fahren){
-        return ((fahren - 32) / 1.8);
-    }
 }
