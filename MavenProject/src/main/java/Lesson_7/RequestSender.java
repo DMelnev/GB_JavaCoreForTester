@@ -38,6 +38,7 @@ public class RequestSender {
                 .addPathSegment("5day")
                 .addPathSegment(String.valueOf(cityID))
                 .addQueryParameter("apikey", API_KEY)
+                .addQueryParameter("metric", "true")
                 .build();
 
         Request request = new Request.Builder()
@@ -57,23 +58,21 @@ public class RequestSender {
                                 .at("/Date")
                                 .asText());
                 element.setMinTemp(
-                        fahrengeitToCelsius(
                                 objectMapper.readTree(str)
                                         .at("/DailyForecasts")
                                         .get(i)
                                         .at("/Temperature/Minimum/Value")
-                                        .asText()
-                        ));
+                                        .asDouble()
+                        );
                 element.setMaxTemp(
-                        fahrengeitToCelsius(
                                 objectMapper.readTree(str)
                                         .at("/DailyForecasts")
                                         .get(i)
                                         .at("/Temperature")
                                         .at("/Maximum")
                                         .at("/Value")
-                                        .asText()
-                        ));
+                                        .asDouble()
+                        );
                 element.setDayPhrase(
                         objectMapper.readTree(str)
                                 .at("/DailyForecasts")
