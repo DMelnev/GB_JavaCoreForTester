@@ -59,26 +59,29 @@ public class RequestSender {
 //                        .at("/Date")
 //                        .asText());
 
-                element.setDate(objectMapper.readTree(Objects.requireNonNull(response.body()).string())
-                        .at("/DailyForecasts")
-                        .get(i)
-                        .at("/Date")
-                        .asText());
-                element.setMinTemp(
-                        fahrengeitToCelsius(objectMapper.readTree(Objects.requireNonNull(response.body()).string())
+                element.setDate(
+                        objectMapper.readTree(Objects.requireNonNull(response.body()).string())
                                 .at("/DailyForecasts")
                                 .get(i)
-                                .at("/Temperature/Minimum/Value")
-                                .asText()
+                                .at("/Date")
+                                .asText());
+                element.setMinTemp(
+                        fahrengeitToCelsius(
+                                objectMapper.readTree(Objects.requireNonNull(response.body()).string())
+                                        .at("/DailyForecasts")
+                                        .get(i)
+                                        .at("/Temperature/Minimum/Value")
+                                        .asText()
                         ));
                 element.setMaxTemp(
-                        fahrengeitToCelsius(objectMapper.readTree(Objects.requireNonNull(response.body()).string())
-                                .at("/DailyForecasts")
-                                .get(i)
-                                .at("/Temperature")
-                                .at("/Maximum")
-                                .at("/Value")
-                                .asText()
+                        fahrengeitToCelsius(
+                                objectMapper.readTree(Objects.requireNonNull(response.body()).string())
+                                        .at("/DailyForecasts")
+                                        .get(i)
+                                        .at("/Temperature")
+                                        .at("/Maximum")
+                                        .at("/Value")
+                                        .asText()
                         ));
                 System.out.println(element);
                 list.add(element);
@@ -86,7 +89,7 @@ public class RequestSender {
 
         } catch (IOException e) {
 
-//            e.printStackTrace();
+            e.printStackTrace();
         }
         return list;
     }
