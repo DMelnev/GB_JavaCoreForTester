@@ -138,7 +138,7 @@ public class RequestSender {
         return cityID;
     }
 
-    private static double fahrengeitToCelsius(String fahren) {
-        return ((Double.parseDouble(fahren) - 32) / 1.8);
-    }
+//    private static double fahrengeitToCelsius(String fahren) {
+//        return ((Double.parseDouble(fahren) - 32) / 1.8);
+//    }
 }
