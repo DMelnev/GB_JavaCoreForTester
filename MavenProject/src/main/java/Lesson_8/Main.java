@@ -2,6 +2,7 @@ package Lesson_8;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -18,9 +19,10 @@ public class Main {
 
         System.out.println("Enter the city:");
         String cityName = scanner.next();
+        if (cityName.trim().equals("/")) cityName = "Tula";
 
         WeatherData weatherData = new WeatherData(cityName);
-
+        if (weatherData.getCityId() < 0) return;
         RequestSender.getTempForFiveDays(weatherData);
         try {
             DbHandler dbHandler = new DbHandler();
@@ -29,16 +31,18 @@ public class Main {
             e.printStackTrace();
         }
 
+        // read from DB
 
-        SimpleDateFormat simpleDate = new SimpleDateFormat("dd.MM.yyyy ");
+        try {
+            DbHandler dbHandler = new DbHandler();
+            ArrayList<TempData> result = dbHandler.getFromDB(weatherData.getCityId());
+            SimpleDateFormat simpleDate = new SimpleDateFormat("dd.MM.yyyy ");
 
-        if (weatherData.getList().size() > 0) {
-            System.out.println("Weather for next five days in " + cityName);
-
-            for (TempData element : weatherData.getList()) {
+            for (TempData element : result) {
                 System.out.println(simpleDate.format(element.getDate()) + " " + element);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
     }
 }

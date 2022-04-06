@@ -9,6 +9,16 @@ public class TempData {
     private  String dayPhrase;
     private Date date;
 
+    public TempData() {
+    }
+
+    public TempData(double minTemp, double maxTemp, String dayPhrase, Date date) {
+        this.minTemp = minTemp;
+        this.maxTemp = maxTemp;
+        this.dayPhrase = dayPhrase;
+        this.date = date;
+    }
+
     public void setDayPhrase(String dayPhrase) {
         this.dayPhrase = dayPhrase;
     }
