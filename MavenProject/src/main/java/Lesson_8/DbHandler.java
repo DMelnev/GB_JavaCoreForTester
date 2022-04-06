@@ -5,11 +5,7 @@ import org.sqlite.JDBC;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 public class DbHandler {
     public static final String DB_PATH = "jdbc:sqlite:javaTest.db";
