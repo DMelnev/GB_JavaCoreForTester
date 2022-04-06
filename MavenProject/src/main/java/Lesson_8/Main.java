@@ -1,11 +1,11 @@
-package Lesson_7;
+package Lesson_8;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Class Lesson_7.Main
+ * Class Lesson_8.Main
  *
  * @author Melnev Dmitriy
  * @version 2022-

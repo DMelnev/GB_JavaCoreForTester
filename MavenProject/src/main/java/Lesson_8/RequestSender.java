@@ -1,4 +1,4 @@
-package Lesson_7;
+package Lesson_8;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.HttpUrl;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * Class Lesson_7.Main
+ * Class Lesson_8.Main
  *
  * @author Melnev Dmitriy
  * @version 2022-
