@@ -29,6 +29,18 @@ public class TempData {
         this.date = Date.from(Instant.parse(date));
     }
 
+    public double getMinTemp() {
+        return minTemp;
+    }
+
+    public double getMaxTemp() {
+        return maxTemp;
+    }
+
+    public String getDayPhrase() {
+        return dayPhrase;
+    }
+
     @Override
     public String toString() {
 
