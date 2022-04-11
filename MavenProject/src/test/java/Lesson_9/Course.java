@@ -24,8 +24,7 @@ public class Course {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Course course = (Course) o;
-        return Objects.equals(name, course.name);
+        return o.equals(name);
     }
 
     @Override

@@ -59,20 +59,16 @@ public class Main {
                         new Course("Computer Science")
                 ))));
 
-        System.out.println(getStream(group));
+        System.out.println(getStream(group).size());
 
     }
     static List<Course> getStream(List<Student> list){
-//        List<Course> result = new ArrayList<>();
-//        for (Student student : list){
-//            result.add(student.getAllCourses());
-//        }
-//        result.stream()
-//                .distinct()
-//                .collect(Collectors.toList());
-//        return result;
-        return Arrays.stream(list)
-                .flatMap(Collection::stream)
-                .collect(Collection.toList());
+        List<Course> result = new ArrayList<>();
+        for (Student student : list){
+            result.addAll(student.getAllCourses());
+        }
+        return result.stream()
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
