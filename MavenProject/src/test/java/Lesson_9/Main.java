@@ -70,12 +70,7 @@ public class Main {
     static List<Student> getSpecificStudents(List<Student> list, Course course) {
         ArrayList<Student> result = new ArrayList<>(list);
         return result.stream()
-                .filter((a) -> {
-                    for (Course e : a.getAllCourses()) {
-                        if (e.equals(course)) return true;
-                    }
-                    return false;
-                })
+                .filter((a) -> a.getAllCourses().contains(course))
                 .collect(Collectors.toList());
     }
 }
