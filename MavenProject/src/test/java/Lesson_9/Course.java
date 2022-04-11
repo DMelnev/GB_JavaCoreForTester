@@ -32,4 +32,11 @@ public class Course {
     public int hashCode() {
         return Objects.hash(name);
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
