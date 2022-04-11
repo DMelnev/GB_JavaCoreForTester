@@ -18,7 +18,6 @@ public class Main {
         group.add(new Student("Petrov",
                 new ArrayList<>(List.of(
                         new Course("History"),
-                        new Course("Literature"),
                         new Course("Computer Science")
                 ))));
         group.add(new Student("Sidorov",
@@ -31,9 +30,7 @@ public class Main {
         group.add(new Student("Suslov",
                 new ArrayList<>(List.of(
                         new Course("Biology"),
-                        new Course("Physics"),
-                        new Course("Botany"),
-                        new Course("Computer Science")
+                        new Course("Botany")
                 ))));
         group.add(new Student("Pechkin",
                 new ArrayList<Course>(List.of(
@@ -47,15 +44,25 @@ public class Main {
                 ))));
 
         System.out.println(getStream(group).size());
+        System.out.println(getBestsStudents(group));
 
     }
-    static List<Course> getStream(List<Student> list){
+
+    static List<Course> getStream(List<Student> list) {
         List<Course> result = new ArrayList<>();
-        for (Student student : list){
+        for (Student student : list) {
             result.addAll(student.getAllCourses());
         }
         return result.stream()
                 .distinct()
+                .collect(Collectors.toList());
+    }
+
+    static List<Student> getBestsStudents(List<Student> list) {
+        ArrayList<Student> result = new ArrayList<>(list);
+        return result.stream()
+                .sorted((a, b) -> b.getAllCourses().size() - a.getAllCourses().size())
+                .limit(3)
                 .collect(Collectors.toList());
     }
 }

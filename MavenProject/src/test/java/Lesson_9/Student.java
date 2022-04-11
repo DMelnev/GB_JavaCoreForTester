@@ -19,4 +19,11 @@ public class Student{
     public List<Course> getAllCourses() {
         return courses;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
