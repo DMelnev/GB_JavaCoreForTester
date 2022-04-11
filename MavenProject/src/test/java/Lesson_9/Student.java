@@ -12,10 +12,6 @@ public class Student{
         this.courses = courses;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public List<Course> getAllCourses() {
         return courses;
     }
