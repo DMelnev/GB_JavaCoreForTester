@@ -44,7 +44,7 @@ public class Main {
                 ))));
 
         System.out.println(getStream(group).size());
-        System.out.println(getBestsStudents(group));
+        System.out.println(getBestStudents(group));
         System.out.println(getSpecificStudents(group, new Course("Botany")));
 
     }
@@ -59,7 +59,7 @@ public class Main {
                 .collect(Collectors.toList());
     }
 
-    static List<Student> getBestsStudents(List<Student> list) {
+    static List<Student> getBestStudents(List<Student> list) {
         ArrayList<Student> result = new ArrayList<>(list);
         return result.stream()
                 .sorted((a, b) -> b.getAllCourses().size() - a.getAllCourses().size())
