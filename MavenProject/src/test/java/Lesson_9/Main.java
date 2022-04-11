@@ -33,10 +33,10 @@ public class Main {
                         new Course("Botany")
                 ))));
         group.add(new Student("Pechkin",
-                new ArrayList<Course>(List.of(
+                new ArrayList<>(List.of(
                         new Course("Geography")
                 ))));
-        group.add(new Student("Tryapkin",
+        group.add(new Student("Pontryagin",
                 new ArrayList<>(List.of(
                         new Course("Literature"),
                         new Course("Chemistry"),
