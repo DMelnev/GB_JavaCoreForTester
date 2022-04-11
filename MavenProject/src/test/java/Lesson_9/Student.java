@@ -1,12 +1,21 @@
 package Lesson_9;
 
+import java.util.ArrayList;
 import java.util.List;
 
-interface Student {
-    String getName();
-    List<Course> getAllCourses();
+public class Student{
+    private String name;
+    private ArrayList<Course> courses = new ArrayList<>();
 
-}
-interface Course {
+    public Student(String name) {
+        this.name = name;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public List<Course> getAllCourses() {
+        return courses;
+    }
 }
