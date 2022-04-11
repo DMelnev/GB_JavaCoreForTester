@@ -1,6 +1,7 @@
 package Lesson_9;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -16,7 +17,44 @@ public class Main {
         stream.add(new Course("Physics"));
         stream.add(new Course("Computer Science"));
 
-        group.add(new Student("Ivanov", {}));
+        group.add(new Student("Ivanov",
+                new ArrayList<Course>(List.of(
+                        new Course("Biology"),
+                        new Course("Geography"),
+                        new Course("Chemistry"),
+                        new Course("Physics")
+                        ))));
+        group.add(new Student("Petrov",
+                new ArrayList<Course>(List.of(
+                        new Course("History"),
+                        new Course("Literature"),
+                        new Course("Computer Science")
+                ))));
+        group.add(new Student("Sidorov",
+                new ArrayList<Course>(List.of(
+                        new Course("Literature"),
+                        new Course("Geography"),
+                        new Course("Chemistry"),
+                        new Course("Computer Science")
+                ))));
+        group.add(new Student("Suslov",
+                new ArrayList<Course>(List.of(
+                        new Course("Biology"),
+                        new Course("Physics"),
+                        new Course("Literature"),
+                        new Course("Computer Science")
+                ))));
+        group.add(new Student("Pechkin",
+                new ArrayList<Course>(List.of(
+                        new Course("Geography")
+                ))));
+        group.add(new Student("Tryapkin",
+                new ArrayList<Course>(List.of(
+                        new Course("Literature"),
+                        new Course("Chemistry"),
+                        new Course("Computer Science")
+                ))));
+
 
     }
 }

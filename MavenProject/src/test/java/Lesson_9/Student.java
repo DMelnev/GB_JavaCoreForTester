@@ -5,10 +5,11 @@ import java.util.List;
 
 public class Student{
     private String name;
-    private ArrayList<Course> courses = new ArrayList<>();
+    private ArrayList<Course> courses;
 
-    public Student(String name) {
+    public Student(String name, ArrayList<Course> courses) {
         this.name = name;
+        this.courses = courses;
     }
 
     public String getName() {
