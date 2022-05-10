@@ -1,4 +1,4 @@
-package Lesson_7;
+package Lesson_8;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.HttpUrl;
@@ -7,11 +7,12 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * Class Lesson_7.Main
+ * Class Lesson_8.Main
  *
  * @author Melnev Dmitriy
  * @version 2022-
@@ -24,10 +25,9 @@ public class RequestSender {
     public static final String SCHEME = "HTTP";
     public static final String HOST = "dataservice.accuweather.com";
 
-    static ArrayList<TempData> getTempForFiveDays(int cityID) {
-
-        ArrayList<TempData> list = new ArrayList<>();
-        if (cityID < 0) return list;
+    static void getTempForFiveDays(WeatherData weatherData) {
+        if (weatherData.getCityId() < 0) return;
+        ArrayList<TempData> list = weatherData.getList();
 
         HttpUrl httpUrl = new HttpUrl.Builder()
                 .scheme(SCHEME)
@@ -36,7 +36,7 @@ public class RequestSender {
                 .addPathSegment("v1")
                 .addPathSegment("daily")
                 .addPathSegment("5day")
-                .addPathSegment(String.valueOf(cityID))
+                .addPathSegment(String.valueOf(weatherData.getCityId()))
                 .addQueryParameter("apikey", API_KEY)
                 .addQueryParameter("metric", "true")
                 .build();
@@ -58,21 +58,21 @@ public class RequestSender {
                                 .at("/Date")
                                 .asText());
                 element.setMinTemp(
-                                objectMapper.readTree(str)
-                                        .at("/DailyForecasts")
-                                        .get(i)
-                                        .at("/Temperature/Minimum/Value")
-                                        .asDouble()
-                        );
+                        objectMapper.readTree(str)
+                                .at("/DailyForecasts")
+                                .get(i)
+                                .at("/Temperature/Minimum/Value")
+                                .asDouble()
+                );
                 element.setMaxTemp(
-                                objectMapper.readTree(str)
-                                        .at("/DailyForecasts")
-                                        .get(i)
-                                        .at("/Temperature")
-                                        .at("/Maximum")
-                                        .at("/Value")
-                                        .asDouble()
-                        );
+                        objectMapper.readTree(str)
+                                .at("/DailyForecasts")
+                                .get(i)
+                                .at("/Temperature")
+                                .at("/Maximum")
+                                .at("/Value")
+                                .asDouble()
+                );
                 element.setDayPhrase(
                         objectMapper.readTree(str)
                                 .at("/DailyForecasts")
@@ -88,12 +88,22 @@ public class RequestSender {
 
             e.printStackTrace();
         }
-        return list;
+        return;
     }
 
     static int getCityID(String cityName) {
 
         int cityID = -1;
+        try {
+            DbHandler dbHandler = new DbHandler();
+            int res = dbHandler.getCityID(cityName);
+            if (res > 0) {
+                System.out.println("City ID was read from db");
+                return res;
+            }
+        } catch (SQLException e) {
+//            e.printStackTrace();
+        }
 
         HttpUrl httpUrl = new HttpUrl.Builder()
                 .scheme(SCHEME)
@@ -137,8 +147,4 @@ public class RequestSender {
         }
         return cityID;
     }
-
-//    private static double fahrengeitToCelsius(String fahren) {
-//        return ((Double.parseDouble(fahren) - 32) / 1.8);
-//    }
 }

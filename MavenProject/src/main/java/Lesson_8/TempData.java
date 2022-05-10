@@ -1,4 +1,4 @@
-package Lesson_7;
+package Lesson_8;
 
 import java.time.Instant;
 import java.util.Date;
@@ -8,6 +8,16 @@ public class TempData {
     private double maxTemp;
     private  String dayPhrase;
     private Date date;
+
+    public TempData() {
+    }
+
+    public TempData(double minTemp, double maxTemp, String dayPhrase, Date date) {
+        this.minTemp = minTemp;
+        this.maxTemp = maxTemp;
+        this.dayPhrase = dayPhrase;
+        this.date = date;
+    }
 
     public void setDayPhrase(String dayPhrase) {
         this.dayPhrase = dayPhrase;
@@ -27,6 +37,18 @@ public class TempData {
 
     public void setDate(String date) {
         this.date = Date.from(Instant.parse(date));
+    }
+
+    public double getMinTemp() {
+        return minTemp;
+    }
+
+    public double getMaxTemp() {
+        return maxTemp;
+    }
+
+    public String getDayPhrase() {
+        return dayPhrase;
     }
 
     @Override
